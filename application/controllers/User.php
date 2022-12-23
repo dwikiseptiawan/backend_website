@@ -20,29 +20,7 @@ class User extends Server
     // buat service "POST"
     function index_get()
     {
-        // ambil parameter username dan password
-        $username = $this->get("username");
-        $password = $this->get("password");
-        $check = false;
-        $id = "EMPTY";
-        $type = "EMPTY";
-
-        // panggil method "get_data"
-        $hasil = $this->user->get_data();
-
-        foreach ($hasil as $user) {
-            if (strcmp($user->username, $username) == 0 && strcmp($user->password, $password) == 0) {
-                $check = true;
-                $id = $user->id;
-                $type = $user->type;
-            }
-        }
-
-        $this->response([
-            'check' => $check,
-            'id' => base64_encode($id),
-            'type' => $type
-        ], 200);
+        $this->response(['user' => $this->user->get_data()], 200);
     }
 
     // buat service "POST"
