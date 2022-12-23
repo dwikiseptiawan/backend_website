@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Des 2022 pada 02.45
+-- Waktu pembuatan: 23 Des 2022 pada 05.14
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `gambar`
+--
+
+CREATE TABLE `gambar` (
+  `id` int(11) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_user`
 --
 
@@ -31,12 +43,20 @@ CREATE TABLE `tbl_user` (
   `id` int(10) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `type` varchar(1) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `gambar`
+--
+ALTER TABLE `gambar`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `tbl_user`
@@ -47,6 +67,12 @@ ALTER TABLE `tbl_user`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `gambar`
+--
+ALTER TABLE `gambar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
