@@ -17,10 +17,15 @@ class Validation extends Server
         $this->load->model("MUser", "user", TRUE);
     }
 
-    // buat service "POST"
+    // buat service "GET"
     function index_get()
     {
-        echo "Anda kena Prank";
+
+    }
+
+    // buat service "UPDATE"
+    function index_update()
+    {
     }
 
     // buat service "POST"
