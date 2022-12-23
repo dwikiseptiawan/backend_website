@@ -36,9 +36,30 @@ class Validation extends Server
     }
 
     // buat service "UPDATE"
-    function index_update()
+    function index_put()
     {
-        $number = $this->put('number');
+        $number = $this->put('oke');
+        // $hasil = $this->phone->update_data($number);
+
+        // jika berhasil update
+        // if ($hasil == 1) {
+        $this->response(
+            [
+                'message' => $number
+            ],
+            200
+        );
+        // }
+
+        // jika gagal update
+        // else {
+        //     $this->response(
+        //         [
+        //             'message' => "Number Redirect Whatsapp Gagal di Update"
+        //         ],
+        //         200
+        //     );
+        // }
     }
 
     // buat service "POST"
