@@ -15,17 +15,21 @@ class Validation extends Server
 
         // panggil model "User"
         $this->load->model("MUser", "user", TRUE);
+        $this->load->model("MNumber", "phone", TRUE);
     }
 
     // buat service "GET"
     function index_get()
     {
-
     }
 
     // buat service "UPDATE"
     function index_update()
     {
+
+        $this->response([
+            'number' => []
+        ], 200);
     }
 
     // buat service "POST"
