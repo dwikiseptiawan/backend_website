@@ -21,7 +21,7 @@ class Gambar extends Server
     function index_get()
     {
         // hasil respon
-        $this->response(array("mahasiswa" => $this->gambar->get_data()), 200);
+        $this->response(array("gambar" => $this->gambar->get_data()), 200);
     }
 
     // buat service "POST"
@@ -30,23 +30,23 @@ class Gambar extends Server
         // // panggil model "Mmahasiswa"
         // $this->load->model("Mmahasiswa","mdl",TRUE);
         // ambil parameter data yang akan di isi
-        $data = array(
-            "npm" => $this->post("npm"), //array $data[0]
-            "nama" => $this->post("nama"), //array $data[1]
-            "telepon" => $this->post("telepon"), //array $data[2]
-            "jurusan" => $this->post("jurusan"), //array $data[3]
-            "token" => base64_encode($this->post("npm")),
-        );
-        // panggil method "save data"
-        $hasil = $this->mdl->save_data($data["npm"], $data["nama"], $data["telepon"], $data["jurusan"], $data["token"]);
-        // jika hasil = 0
-        if ($hasil == 0) {
-            $this->response(array("status" => "Data Mahasiswa Berhasil Disimpan"), 200);
-        }
-        // jika hasil !=0
-        else {
-            $this->response(array("status" => "Data Mahasiswa Gagal Disimpan"), 200);
-        }
+        // $data = array(
+        //     "npm" => $this->post("npm"), //array $data[0]
+        //     "nama" => $this->post("nama"), //array $data[1]
+        //     "telepon" => $this->post("telepon"), //array $data[2]
+        //     "jurusan" => $this->post("jurusan"), //array $data[3]
+        //     "token" => base64_encode($this->post("npm")),
+        // );
+        // // panggil method "save data"
+        // $hasil = $this->mdl->save_data($data["npm"], $data["nama"], $data["telepon"], $data["jurusan"], $data["token"]);
+        // // jika hasil = 0
+        // if ($hasil == 0) {
+        //     $this->response(array("status" => "Data Mahasiswa Berhasil Disimpan"), 200);
+        // }
+        // // jika hasil !=0
+        // else {
+        //     $this->response(array("status" => "Data Mahasiswa Gagal Disimpan"), 200);
+        // }
     }
 
     // buat service "DELETE"
