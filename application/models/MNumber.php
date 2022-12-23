@@ -16,8 +16,8 @@ class MNumber extends CI_Model
     function update_data($number)
     {
         // cek apakah npm ada atau tidak
-        // $this->db->select("npm");
-        // $this->db->from("tb_mahasiswa");
+        $this->db->select("*");
+        $this->db->from("tbl_number");
         // $this->db->where("TO_BASE64(npm) = '$token'");
 
         $data = array(
