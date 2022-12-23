@@ -5,17 +5,12 @@ class Mmahasiswa extends CI_Model
 {
 
     // buat fungsi "get_data"
-    function get_data($token)
+    function get_data()
     {
-        $this->db->select("id AS id_mhs, npm AS npm_mhs, nama AS nama_mhs, telepon AS telepon_mhs, jurusan AS jurusan_mhs");
-        $this->db->from("tb_mahasiswa");
+        $this->db->select("*");
+        $this->db->from("tbl_user");
 
-        // jika token terisi
-        if (!empty($token)) {
-            $this->db->where("TO_BASE64(npm) = '$token'");
-        }
-
-        $this->db->order_by("npm", "ASC");
+        $this->db->order_by("nama", "ASC");
         $query = $this->db->get()->result();
 
         return $query;
