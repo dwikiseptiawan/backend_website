@@ -8,7 +8,7 @@ class MNumber extends CI_Model
     function get_data()
     {
         $this->db->select("*");
-        $this->db->from("tbl_gambar");
+        $this->db->from("tbl_number");
         return $this->db->get()->result();
     }
     // buat fungsi untuk delete data
