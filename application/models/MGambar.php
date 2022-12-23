@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Mmahasiswa extends CI_Model
+class MGambar extends CI_Model
 {
 
     // buat fungsi "get_data"
