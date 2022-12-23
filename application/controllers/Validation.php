@@ -15,51 +15,6 @@ class Validation extends Server
 
         // panggil model "User"
         $this->load->model("MUser", "user", TRUE);
-        $this->load->model("MNumber", "phone", TRUE);
-    }
-
-    // buat service "GET"
-    function index_get()
-    {
-        $hasil = $this->phone->get_data();
-        $phone = "";
-        foreach ($hasil as $p) {
-            $phone = $p->number;
-        }
-
-        $this->response(
-            [
-                'number' => $phone
-            ],
-            200
-        );
-    }
-
-    // buat service "UPDATE"
-    function index_put()
-    {
-        $number = $this->put('oke');
-        // $hasil = $this->phone->update_data($number);
-
-        // jika berhasil update
-        // if ($hasil == 1) {
-        $this->response(
-            [
-                'message' => $number
-            ],
-            200
-        );
-        // }
-
-        // jika gagal update
-        // else {
-        //     $this->response(
-        //         [
-        //             'message' => "Number Redirect Whatsapp Gagal di Update"
-        //         ],
-        //         200
-        //     );
-        // }
     }
 
     // buat service "POST"
