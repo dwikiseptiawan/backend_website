@@ -18,11 +18,11 @@ class User extends Server
     }
 
     // buat service "POST"
-    function validation_user()
+    function index_get()
     {
         // ambil parameter username dan password
-        $username = $this->post("username");
-        $password = $this->post("password");
+        $username = $this->get("username");
+        $password = $this->get("password");
         $check = false;
         $id = "EMPTY";
         $type = "EMPTY";
@@ -38,55 +38,21 @@ class User extends Server
             }
         }
 
-        // hasil respon
-        $hasil = [
+        $this->response([
             'check' => $check,
             'id' => base64_encode($id),
             'type' => $type
-        ];
-
-        // $this->response(array("jos" => "jadi"), 200);
+        ], 200);
     }
 
     // buat service "POST"
-    function input_user()
+    function index_post()
     {
         $token = $this->post("token");
         $nama = $this->post("nama");
         $username = $this->post("username");
         $password = $this->post("password");
-        $type = 2;
-        $check = false;
-
-        $hasil = $this->user->get_data();
-
-        foreach ($hasil as $user) {
-            if (strcmp(base64_encode($user->id), $token) == 0) {
-                $check = true;
-            }
-        }
-
-        if ($check) $hasil = $this->user->save_data($nama, $username, $password, $type);
-        else $hasil = 0;
-
-        // jika hasil == 1
-        if ($hasil == 1) {
-            $this->response(array("status" => "Data User Berhasil Disimpan"), 200);
-        }
-        // jika hasil == 0
-        else {
-            $this->response(array("status" => "Data User Gagal Disimpan"), 200);
-        }
-    }
-
-    // buat service "POST"
-    function input_user_admin()
-    {
-        $token = $this->post("token");
-        $nama = $this->post("nama");
-        $username = $this->post("username");
-        $password = $this->post("password");
-        $type = 1;
+        $type = $this->post("type");
         $check = false;
 
         $hasil = $this->user->get_data();
@@ -111,9 +77,9 @@ class User extends Server
     }
 
     // buat service "DELETE"
-    function service_delete()
+    function index_delete()
     {
-        $id = $this->post("id");
+        $id = $this->delete("id");
 
         $hasil = $this->user->delete_data($id);
 
