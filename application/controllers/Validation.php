@@ -27,8 +27,8 @@ class Validation extends Server
     function index_post()
     {
         // ambil parameter username dan password
-        $username = $this->get("username");
-        $password = $this->get("password");
+        $username = $this->post("username");
+        $password = $this->post("password");
         $check = false;
         $id = "EMPTY";
         $type = "EMPTY";
