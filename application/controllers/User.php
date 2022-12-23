@@ -13,20 +13,36 @@ class User extends Server
         parent::__construct();
         // Your own constructor code
 
-        // // panggil model "User"
-        $this->load->model("Mmahasiswa", "mdl", TRUE);
+        // panggil model "User"
+        $this->load->model("MUser", "user", TRUE);
     }
 
-    // buat service "GET"
-    function service_get()
+    // buat service "POST"
+    function validation_user()
     {
-        // ambil parameter token "npm"
-        $token = $this->get("npm");
+        // ambil parameter username dan password
+        $username = $this->post("username");
+        $password = $this->post("password");
+        $check = false;
+        $id = "EMPTY";
 
         // panggil method "get_data"
-        $hasil = $this->mdl->get_data(base64_encode($token));
+        $hasil = $this->user->get_data();
+
+        foreach ($hasil as $user) {
+            if (strcmp($user['username'], $username) == 0 && strcmp($user['password'], $password) == 0) {
+                $check = true;
+                $id = $user['id'];
+            }
+        }
+
         // hasil respon
-        $this->response(array("mahasiswa" => $hasil), 200);
+        $hasil = [
+            'check' => $check,
+            'id' => $id
+        ];
+
+        $this->response(array("login" => $hasil), 200);
     }
 
     // buat service "POST"
