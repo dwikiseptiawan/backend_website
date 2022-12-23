@@ -21,15 +21,24 @@ class Validation extends Server
     // buat service "GET"
     function index_get()
     {
+        $hasil = $this->phone->get_data();
+        $phone = "";
+        foreach ($hasil as $p) {
+            $phone = $p->number;
+        }
+
+        $this->response(
+            [
+                'number' => $phone
+            ],
+            200
+        );
     }
 
     // buat service "UPDATE"
     function index_update()
     {
-
-        $this->response([
-            'number' => []
-        ], 200);
+        $number = $this->put('number');
     }
 
     // buat service "POST"
