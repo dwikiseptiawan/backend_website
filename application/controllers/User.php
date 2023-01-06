@@ -33,13 +33,13 @@ class User extends Server
         $type = $this->post("type");
         $check = false;
 
-        $hasil = $this->user->get_data();
+        // $hasil = $this->user->get_data();
 
-        foreach ($hasil as $user) {
-            if (strcmp(base64_encode($user->id), $token) == 0) {
+        // foreach ($hasil as $user) {
+        //     if (strcmp(base64_encode($user->id), $token) == 0) {
                 $check = true;
-            }
-        }
+            // }
+        // }
 
         if ($check) $hasil = $this->user->save_data($nama, $username, $password, $type);
         else $hasil = 0;
