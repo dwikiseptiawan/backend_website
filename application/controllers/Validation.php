@@ -40,7 +40,7 @@ class Validation extends Server
 
         $this->response([
             'check' => $check,
-            'id' => base64_encode($id),
+            'token' => base64_encode($id),
             'type' => $type
         ], 200);
     }
