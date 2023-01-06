@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// panggil file "Server.php"
 require APPPATH . "libraries/Server.php";
-// require APPPATH."libraries/Server.php";
 
 class Validation extends Server
 {
