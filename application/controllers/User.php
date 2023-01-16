@@ -20,7 +20,7 @@ class User extends Server
     // buat service "POST"
     function index_get()
     {
-        $this->response(['user' => $this->user->get_data()], 200);
+        $this->response(['user' => $this->user->get_data(), 'user_all' => $this->user->get_data_r(), 'user_today' => $this->user->get_data_r2()], 200);
     }
 
     // buat service "POST"
