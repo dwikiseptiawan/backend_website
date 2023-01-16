@@ -9,23 +9,17 @@ class Validation extends Server
     public function __construct()
     {
         parent::__construct();
-        // Your own constructor code
-
-        // panggil model "User"
         $this->load->model("MUser", "user", TRUE);
     }
 
-    // buat service "POST"
     function index_post()
     {
-        // ambil parameter username dan password
         $username = $this->post("username");
         $password = $this->post("password");
         $check = false;
         $id = "EMPTY";
         $type = "EMPTY";
 
-        // panggil method "get_data"
         $hasil = $this->user->get_data();
 
         foreach ($hasil as $user) {
