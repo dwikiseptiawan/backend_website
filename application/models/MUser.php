@@ -16,6 +16,37 @@ class MUser extends CI_Model
         return $query;
     }
 
+    function get_data_r()
+    {
+        $this->db->select("*");
+        $this->db->from("tbl_user");
+        $this->db->where("type = 0");
+        $query = $this->db->get()->result();
+
+        $size = 0;
+        foreach($query as $q){
+            $size += 1;
+        }
+
+        return $size;
+    }
+
+    function get_data_r2()
+    {
+        $this->db->select("*");
+        $this->db->from("tbl_user");
+        $this->db->where("DATE(created) = CURDATE()");
+        $this->db->where("type = 0");
+        $query = $this->db->get()->result();
+
+        $size = 0;
+        foreach($query as $q){
+            $size += 1;
+        }
+
+        return $size;
+    }
+
     // buat fungsi untuk save data
     function save_data($nama, $username, $password, $type)
     {
