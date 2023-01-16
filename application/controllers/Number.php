@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// panggil file "Server.php"
 require APPPATH . "libraries/Server.php";
-// require APPPATH."libraries/Server.php";
 
 class Number extends Server
 {
@@ -11,13 +9,9 @@ class Number extends Server
     public function __construct()
     {
         parent::__construct();
-        // Your own constructor code
-
-        // panggil model "User"
         $this->load->model("MNumber", "phone", TRUE);
     }
 
-    // buat service "GET"
     function index_get()
     {
         $hasil = $this->phone->get_data();
@@ -34,13 +28,11 @@ class Number extends Server
         );
     }
 
-    // buat service "POST"
     function index_post()
     {
         $number = $this->post('number');
         $hasil = $this->phone->update_data($number);
 
-        // jika berhasil update
         if ($hasil == 1) {
             $this->response(
                 [
@@ -48,10 +40,7 @@ class Number extends Server
                 ],
                 200
             );
-        }
-
-        // jika gagal update
-        else {
+        } else {
             $this->response(
                 [
                     'message' => "Number Redirect Whatsapp Gagal di Update"
